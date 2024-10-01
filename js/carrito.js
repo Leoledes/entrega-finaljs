@@ -16,26 +16,7 @@ function renderCarrito (cartItems) {
 }
 renderCarrito(cartStorage)
 
-//funcion para contador de cantidad
-let counter = document.getElementById("contador")
-let sumar = document.getElementById("mas-boton")
-let restar = document.getElementById("menos-boton")
-let contador = 0
 
-sumar.onclick = () => {
-    contador ++
-    counter.innerHTML = contador
-    restar.disabled = false
-}
-
-restar.onclick = () => {
-    if (contador === 0){
-        restar.disabled = true
-    } else {
-        contador --
-        counter.innerHTML = contador
-    }
-}
 
 //funcion para limpiar carrito
 function limpiarCarrito(e) {

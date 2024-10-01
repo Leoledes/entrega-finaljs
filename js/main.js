@@ -65,8 +65,13 @@ function addToCartButton () {
         button.onclick = (e) => {
             const vinoId = e.currentTarget.id
             const selectedVino = vinos.find(vino => vino.id == vinoId)
-            cartVinos.push(selectedVino)
-            console.log(cartVinos)
+            if(cartVinos.some(vino => vino.id == vinoId)) {
+                const index = cartVinos.findIndex(vino => vino.id == vinoId)
+                cartVinos[index].cantidad++
+            } else {
+                selectedVino.cantidad = 1
+                cartVinos.push(selectedVino)
+            }
 
             localStorage.setItem("cartVinos",JSON.stringify(cartVinos))
         }

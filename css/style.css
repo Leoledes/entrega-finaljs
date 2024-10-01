@@ -1,17 +1,33 @@
 body{
+    background-color: #FCFBF4;
+}
+
 header{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
+
 main{
-    display: grid;
+    display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
-    gap: 30px;    
 }
+
+
+.vinos-container{
+    display: grid;
+    grid-template-columns: (3, 1fr);
+
+}
+
+.cart-section{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
         
 footer{
     display: flex;
@@ -19,5 +35,3 @@ footer{
     justify-content: center;
     margin-top: 50px;
 }
-}
-

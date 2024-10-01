@@ -2,42 +2,43 @@
 const vinos = [
     {
         id: 1,
-        imagen: "./img/el-enemigo-malbec.jpg",
+        imagen: "../img/el-enemigo-malbec.jpg",
         nombre: "El enemigo",
         variedad: "Malbec",
         precio: 18625
     },
     {
         id: 2,
-        imagen: "./img/dv-catena-malbec.jpg",
+        imagen: "../img/dv-catena-malbec.jpg",
         nombre: "DV Catena",
         variedad: "Malbec",
         precio: 17375
     },
     {
         id: 3,
-        imagen: "./img/angelica-zapata-cabernetsauv.jpg",
+        imagen: "../img/angelica-zapata-cabernetsauv.jpg",
         nombre: "Angelica Zapata",
         variedad: "Cabernet Sauvignon",
         precio: 21125
     },
     {
         id: 4,
-        imagen: "./img/saint-felicien-malbec.jpg",
+        imagen: "../img/saint-felicien-malbec.jpg",
         nombre: "Saint Felicien",
         variedad: "Malbec",
         precio: 8250
     },
     {
         id: 5,
-        imagen: "./img/barda-pinotnoir.jpg",
+        imagen: "../img/barda-pinotnoir.jpg",
         nombre: "Barda",
         variedad: "Pinot Noir",
         precio: 43750
     },
 ]
 
-let cartVinos = []
+
+let cartVinos = [];
 
 let vinosContainer = document.getElementById("vinos-container")
 

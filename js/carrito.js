@@ -10,10 +10,11 @@ function renderCarrito (cartItems) {
                                     <h3>${vino.nombre}</h3>
                                     <h4>Variedad:${vino.variedad}</h4>
                                     <h4>Precio:$${vino.precio}</h4>
-                                    <span class="resta"> - </span>
+                                    <button class="resta"> - </button>
                                     <h4>Cantidad: ${vino.cantidad}</h4>
-                                    <span class="suma"> + </span>
-                                    <h4>Total: $${vino.cantidad*vino.precio}</h4>`                                
+                                    <button class="suma"> + </button>
+                                    <h4>Total: $${vino.cantidad*vino.precio}</h4>
+                                    <button class="limpiar">id=${vino.id}<i class="bi bi-trash-fill"></i></button>`                               
         cartContainer.appendChild(card)
 
         //no terminado

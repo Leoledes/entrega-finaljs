@@ -9,23 +9,18 @@ header{
     flex-direction: column;
 }
 
-main{
+main #vinos-container{
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-
-.vinos-container{
-    display: grid;
     grid-template-columns: (3, 1fr);
-
 }
 
-.cart-section{
+main #cart-section{
     display: flex;
-    flex-direction: row;
-    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: (3, 1fr);
 }
 
         

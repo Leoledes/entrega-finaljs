@@ -33,22 +33,25 @@ function renderCarrito (vinosArray) {
     const botonRestar = document.querySelectorAll('#restar-vino');
     const botonSumar = document.querySelectorAll('#sumar-vino');
 
-    console.log(botonRestar)
-    console.log(botonSumar)
-
     botonRestar.forEach(element => {
         element.addEventListener('click', (e) => {
-            console.log(e);
-            console.log(e.target);
+            const vinoId = e.target.getAttribute('data-js');
+            const h1Cantidad = document.getElementById(`cantidad-vino-${vinoId}`)
+            const vinoStorage = vinosArray.find(vino => vino.id === Number(vinoId))
+            if (vinoStorage.cantidad === 1){
+                    botonRestar.disabled = true
+            } else {
+            vinoStorage.cantidad--
+            h1Cantidad.innerText = `Cantidad:${vinoStorage.cantidad}`
+            }
+        
+            localStorage.setItem("cartVinos", JSON.stringify(vinosArray));
         })
     })
 
     botonSumar.forEach(element => {
         element.addEventListener('click', (e) => {
-            console.log(e);
-            console.log(e.target);
             const vinoId = e.target.getAttribute('data-js');
-            console.log(vinoId);
             const h1Cantidad = document.getElementById(`cantidad-vino-${vinoId}`)
             const vinoStorage = vinosArray.find(vino => vino.id === Number(vinoId))
             vinoStorage.cantidad++

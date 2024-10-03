@@ -22,10 +22,13 @@ function renderCarrito (cartItems) {
                           </div>
                           <button class="eliminarVino" id="${vino.id}">Eliminar</button>`;                               
         cartContainer.appendChild(card)
+})
+}
         
-    //funcion para contador de cantidad
+    /* //funcion para contador de cantidad
     let sumar = card.getElementsByClassName(".suma")
     let restar = card.getElementsByClassName(".resta")
+    let cantidad = 0
 
     sumar.onclick = () => {
         vino.cantidad ++
@@ -38,13 +41,7 @@ function renderCarrito (cartItems) {
         } else {
             vino.cantidad --
         }
-    }
-
-    }
-    )
-    
-    
-}
+    } */
 renderCarrito(cartStorage)
 
 

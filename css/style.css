@@ -1,12 +1,24 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
 body{
     background-color: #FCFBF4;
 }
 
 header{
     display: flex;
+    background-color: #BC742C;
+    margin: 10px 10px;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: center;    
+    flex-direction: column;    
+    color: #f8ca6a;
+    font-family: Rockwell;
+    font-weight: bold;
 }
 
 main #vinos-container{
@@ -16,13 +28,18 @@ main #vinos-container{
     grid-template-columns: (3, 1fr);
 }
 
+.subtitulo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 main #cart-section{
     display: flex;
     align-items: center;
     justify-content: center;
     grid-template-columns: (3, 1fr);
 }
-
         
 footer{
     display: flex;

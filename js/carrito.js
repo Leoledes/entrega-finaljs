@@ -5,8 +5,8 @@ let cartContainer = document.getElementById("cart-section")
 
 
 //funcion para renderizar Carrito
-function renderCarrito (cartItems) {
-    cartItems.forEach(vino =>{
+function renderCarrito (vinosArray) {
+    vinosArray.forEach(vino =>{
         let card = document.createElement("div")
         card.innerHTML = `<img class="imagendevino" src="${vino.imagen}">
                           <div id="datos">
@@ -24,6 +24,7 @@ function renderCarrito (cartItems) {
         cartContainer.appendChild(card)
 })
 }
+renderCarrito(cartStorage);
         
     /* //funcion para contador de cantidad
     let sumar = card.getElementsByClassName(".suma")
@@ -42,7 +43,7 @@ function renderCarrito (cartItems) {
             vino.cantidad --
         }
     } */
-renderCarrito(cartStorage)
+
 
 
 

@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", () => {
+
 let cartStorage = localStorage.getItem("cartVinos")
 cartStorage = JSON.parse(cartStorage)
 
@@ -6,6 +8,10 @@ let cartContainer = document.getElementById("cart-section")
 
 //funcion para renderizar Carrito
 function renderCarrito (vinosArray) {
+    if (!vinosArray || !vinosArray.length) {
+        cartContainer.innerHTML = 'Todavia no pusiste nada gato'
+        return;
+    }
     vinosArray.forEach(vino =>{
         let card = document.createElement("div")
         card.innerHTML = `<img class="imagendevino" src="${vino.imagen}">
@@ -15,16 +21,63 @@ function renderCarrito (vinosArray) {
                             <h4>Precio:$${vino.precio}</h4>
                           </div>
                           <div id="cantidad">
-                            <button class="resta"> - </button>
-                            <h4>Cantidad:${vino.cantidad}</h4>
-                            <button class="suma"> + </button>
+                            <button class="resta" id="restar-vino" data-js=${vino.id} > - </button>
+                            <h4 id="cantidad-vino-${vino.id}">Cantidad:${vino.cantidad}</h4>
+                            <button class="suma" id="sumar-vino" data-js=${vino.id}> + </button>
                             <h4 id="precioSubtotal">Subtotal: $${vino.cantidad*vino.precio}</h4>
                           </div>
                           <button class="eliminarVino" id="${vino.id}">Eliminar</button>`;                               
         cartContainer.appendChild(card)
-})
+    })
+
+    const botonRestar = document.querySelectorAll('#restar-vino');
+    const botonSumar = document.querySelectorAll('#sumar-vino');
+
+    console.log(botonRestar)
+    console.log(botonSumar)
+
+    botonRestar.forEach(element => {
+        element.addEventListener('click', (e) => {
+            console.log(e);
+            console.log(e.target);
+        })
+    })
+
+    botonSumar.forEach(element => {
+        element.addEventListener('click', (e) => {
+            console.log(e);
+            console.log(e.target);
+            const vinoId = e.target.getAttribute('data-js');
+            console.log(vinoId);
+            const h1Cantidad = document.getElementById(`cantidad-vino-${vinoId}`)
+            const vinoStorage = vinosArray.find(vino => vino.id === Number(vinoId))
+            vinoStorage.cantidad++
+            h1Cantidad.innerText = `Cantidad:${vinoStorage.cantidad}`
+        
+            localStorage.setItem("cartVinos", JSON.stringify(vinosArray));
+        })
+    })
+
+    //boton Limpiar Carrito
+    const botonLimpiar = document.createElement("div");
+    botonLimpiar.innerHTML = `<button class="limpiarCarrito">Limpiar Carrito</button>`;
+    cartContainer.appendChild(botonLimpiar);
+
+    botonLimpiar.addEventListener("click", limpiarCarrito);
+    //funcion para limpiar carrito
+    function limpiarCarrito() {
+        cartStorage.length = 0;
+        localStorage.setItem("cartVinos", JSON.stringify(cartStorage));
+        renderCarrito();
+    };
 }
+
+
 renderCarrito(cartStorage);
+})
+
+
+
         
     /* //funcion para contador de cantidad
     let sumar = card.getElementsByClassName(".suma")
@@ -76,20 +129,3 @@ renderCarrito(cartStorage);
 
    // localStorage.setItem("cartItems",JSON.stringify(vinos));
 //}
-
-
-//boton Limpiar Carrito
-const botonLimpiar = document.createElement("div")
-        botonLimpiar.innerHTML = `<button class="limpiarCarrito">Limpiar Carrito</button>`
-        cartContainer.appendChild(botonLimpiar)
-
-botonLimpiar.addEventListener("click", limpiarCarrito)
-//funcion para limpiar carrito
-function limpiarCarrito() {
-    cartStorage.length = 0;
-    localStorage.setItem("cartVinos", JSON.stringify(cartStorage));
-    renderCarrito();
-}
-
-
-

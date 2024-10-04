@@ -6,27 +6,54 @@
   }
 
 body{
-    background-color: #FCFBF4;
+    background-color: #EAE1E2;
 }
 
 header{
     display: flex;
-    background-color: #BC742C;
-    margin: 10px 10px;
+    background-color: #722F37;
+    margin: 20px 50px;
+    padding-top: 10px ;
+    padding-bottom: 10px;
     align-items: center;
     justify-content: center;    
-    flex-direction: column;    
-    color: #f8ca6a;
+    flex-direction: column;
+    color: #EAE1E2;    
     font-family: Rockwell;
     font-weight: bold;
+}
+
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #721422;
+    font-family: Rockwell;
+    font-weight: bold;
+    gap: 30px;
 }
 
 main #vinos-container{
     display: flex;
     align-items: center;
+    text-align: center;
     justify-content: center;
-    grid-template-columns: (3, 1fr);
+    gap: 40px;
+    color: #721422;
+    font-family: Rockwell;
+    font-weight: bold;
+    button.vinoAgregar{
+        padding: 10px 20px;
+        background-color: #828282;
+        color: black;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: Rockwell;
+    }
 }
+
 
 .subtitulo{
     display: flex;
@@ -37,8 +64,36 @@ main #vinos-container{
 main #cart-section{
     display: flex;
     align-items: center;
+    text-align: center;
     justify-content: center;
-    grid-template-columns: (3, 1fr);
+    gap: 40px;
+    color: #721422;
+    font-family: Rockwell;
+    font-weight: bold;
+    button{
+        padding: 10px 20px;
+        background-color: #828282;
+        color: black;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: Rockwell;
+    }    
+}
+
+main #cart-section #cantidad{
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+button .limpiarCarrito{
+    padding: 10px 20px;
+        background-color: #828282;
+        color: black;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: Rockwell;
 }
         
 footer{

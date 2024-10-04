@@ -6,6 +6,7 @@ let cartContainer = document.getElementById("cart-section")
 
 //funcion para renderizar Carrito
 function renderCarrito (vinosArray) {
+    try{
     if (!vinosArray || !vinosArray.length) {
         cartContainer.innerHTML = 'Te falta tomar más vino! Elegí uno que te guste y volvé al carrito.'
         return;
@@ -43,10 +44,10 @@ function renderCarrito (vinosArray) {
             vinoStorage.cantidad--
             h1Cantidad.innerText = `Cantidad:${vinoStorage.cantidad}`
             }
-        
             localStorage.setItem("cartVinos", JSON.stringify(vinosArray));
         })
     })
+
 
     botonSumar.forEach(element => {
         element.addEventListener('click', (e) => {
@@ -58,7 +59,9 @@ function renderCarrito (vinosArray) {
         
             localStorage.setItem("cartVinos", JSON.stringify(vinosArray));
         })
+        
     })
+
     //TEMRINAR CARGA ERRONEA
     botonEliminar.forEach(element => {
         element.addEventListener('click', (e) => {

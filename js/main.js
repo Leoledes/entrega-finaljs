@@ -2,12 +2,16 @@ let vinosContainer = document.getElementById("vinos-container")
 let vinos = []
 
 //fetch con JSON
-fetch("./db/vinos.JSON")
+try{
+fetch("./db/vinos.JSO")
 .then(response => response.json())
 .then(vinosArray => {
     vinos = vinosArray
     renderVinos(vinos)
 })
+}catch (err){
+    console.log(err);
+}
 
 //funcion para renderizar vinos    
 function renderVinos (vinosArray){

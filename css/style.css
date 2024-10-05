@@ -46,7 +46,7 @@ main #vinos-container{
     button.vinoAgregar{
         padding: 10px 20px;
         background-color: #828282;
-        color: black;
+        color: whitesmoke;
         border: none;
         border-radius: 5px;
         cursor: pointer;

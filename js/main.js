@@ -3,7 +3,7 @@ let vinos = []
 
 //fetch con JSON
 try{
-fetch("./db/vinos.JSO")
+fetch("./db/vinos.JSON")
 .then(response => response.json())
 .then(vinosArray => {
     vinos = vinosArray
@@ -25,6 +25,7 @@ function renderVinos (vinosArray){
         vinosContainer.appendChild(card)
     })
     agregarVino()
+    
 
 let cartVinos = []
 //funcion para agregar vinos a carrito
@@ -43,10 +44,27 @@ function agregarVino () {
             }
 
             localStorage.setItem("cartVinos",JSON.stringify(cartVinos))
+
+            //Toastify
+            Toastify({
+                text: "Vino agregado al carrito!",
+                duration: 3000,
+                destination: "../pages/carrito.html",
+                newWindow: true,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "center", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                background: "#828282"
+                },
+                onClick: function(){} // Callback after click
+            }).showToast();
         }
     }
     )
 }
+
 }
 
 

@@ -6,7 +6,6 @@ let cartContainer = document.getElementById("cart-section")
 
 //funcion para renderizar Carrito
 function renderCarrito (vinosArray) {
-    try{
     if (!vinosArray || !vinosArray.length) {
         cartContainer.innerHTML = 'Te falta tomar más vino! Elegí uno que te guste y volvé al carrito.'
         return;

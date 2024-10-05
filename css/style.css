@@ -95,10 +95,34 @@ button .limpiarCarrito{
         cursor: pointer;
         font-family: Rockwell;
 }
-        
-footer{
+
+footer {
     display: flex;
+    padding-top: 10px ;
+    padding-bottom: 10px;
     align-items: center;
-    justify-content: center;
-    margin-top: 50px;
-}
+    justify-content: center;    
+    flex-direction: column;        
+    font-family: Rockwell;
+    font-weight: bold;
+    gap: 10px;
+
+    .boton-inicio{
+        padding: 10px 50px;
+        background-color: #722F37;
+        color: #EAE1E2;
+    }
+    .boton-carrito{
+        padding: 10px 50px;
+        background-color: #722F37;
+        color: #EAE1E2;
+    }
+    
+    .boton-compra{
+        padding: 10px 50px;
+        background-color: #722F37;
+        color: #EAE1E2;
+    }
+  }
+
+  

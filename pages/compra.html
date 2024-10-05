@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- link de Toastify -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <!-- link a Compra JS -->
     <script src="../js/compra.js"></script>
     <!-- link a css-->
@@ -15,7 +17,31 @@
         <h3>Vinos de calidad para todos los gustos y paladares</h3>        
     </header>
     <main>
-        
+        <div id="form-section">
+        <form action="" method="POST">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>            
+            <div class="form-group">
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="apellido" required>
+            </div>
+            <div class="form-group">
+                <label for="direccion">Dirección de Entrega:</label>
+                <input type="text" id="direccion" name="direccion" required>
+            </div>
+            <div class="form-group">
+                <label for="precio_total">Precio Total de Productos:</label>
+                <input type="number" id="precio_total" name="precio_total" value="0" readonly>
+            </div>
+            <button type="submit" class="submit-btn">Enviar Pedido</button>
+        </form>
+        </div>
+
+</body>
+              </form>
+        </div>
     </main>
     <footer>
         <a class="boton-carrito" href="./carrito.html">Volver al carrito</a>

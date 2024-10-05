@@ -97,21 +97,3 @@ renderCarrito(cartStorage);
 
 
 
-//quitButton.addEventListener("click", quitarVino)
-//funcion para eliminar vinos de carrito NOTERMINADO
-//function quitarVino(e) {
-   // const idVinos = e.currentTarget.id;
-   // const index = cartStorage.find(vino => vino.id === idVinos);
-   // cartVinos.splice(index, 1);
-   // renderCarrito();
-   // 
-
-    //localStorage.setItem("cartVinos",JSON.stringify(cartStorage));
-    
-//}
-//quitarVino(cartStorage);
-//NOTERMINADO
-
-
-
-

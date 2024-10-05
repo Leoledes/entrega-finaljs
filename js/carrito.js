@@ -28,7 +28,7 @@ function renderCarrito (vinosArray) {
                             <button class="resta" id="restar-vino" data-js=${vino.id} > - </button>
                             <h4 id="cantidad-vino-${vino.id}">Cantidad:${vino.cantidad}</h4>
                             <button class="suma" id="sumar-vino" data-js=${vino.id}> + </button>
-                            <h4 id="precio-subtotal">Subtotal: $${vino.cantidad*vino.precio}</h4>
+                            <h4 id="precio-subtotal-${vino.id}">Subtotal: $${vino.cantidad*vino.precio}</h4>
                           </div>
                           <button class="elimina" id="${vino.id}"> Eliminar </button>`                            
         cartContainer.appendChild(card)
@@ -43,12 +43,14 @@ function renderCarrito (vinosArray) {
         element.addEventListener('click', (e) => {
             const vinoId = e.target.getAttribute('data-js');
             const h1Cantidad = document.getElementById(`cantidad-vino-${vinoId}`)
+            const h4Subtotal = document.getElementById(`precio-subtotal-${vinoId}`);
             const vinoStorage = vinosArray.find(vino => vino.id === Number(vinoId))
             if (vinoStorage.cantidad === 1){
                     botonRestar.disabled = true
             } else {
             vinoStorage.cantidad--
             h1Cantidad.innerText = `Cantidad:${vinoStorage.cantidad}`
+            h4Subtotal.innerText = `Subtotal: $${(vinoStorage.cantidad * vinoStorage.precio)}`;
             }
             localStorage.setItem("cartVinos", JSON.stringify(vinosArray));
             actualizarPrecioTotal(vinosArray);
@@ -60,9 +62,11 @@ function renderCarrito (vinosArray) {
         element.addEventListener('click', (e) => {
             const vinoId = e.target.getAttribute('data-js');
             const h1Cantidad = document.getElementById(`cantidad-vino-${vinoId}`)
+            const h4Subtotal = document.getElementById(`precio-subtotal-${vinoId}`);
             const vinoStorage = vinosArray.find(vino => vino.id === Number(vinoId))
             vinoStorage.cantidad++
             h1Cantidad.innerText = `Cantidad:${vinoStorage.cantidad}`
+            h4Subtotal.innerText = `Subtotal: $${(vinoStorage.cantidad * vinoStorage.precio)}`;
         
             localStorage.setItem("cartVinos", JSON.stringify(vinosArray));
             actualizarPrecioTotal(vinosArray);
@@ -107,15 +111,13 @@ function renderCarrito (vinosArray) {
     // Función para actualizar el precio total de las compras
 function actualizarPrecioTotal(vinosArray) {
     let precioTotal = calcularPrecioTotal(vinosArray);
-    let totalDiv = document.getElementById('precio-total');
-
-    if (!totalDiv) {
-        totalDiv = document.createElement("div");
-        totalDiv.id = "precio-total";
-        cartContainer.appendChild(totalDiv);
+    let totalPrecio = document.getElementById('precio-total');
+    if (!totalPrecio) {
+        totalPrecio = document.createElement("div");
+        totalPrecio.id = "precio-total";
+        cartContainer.appendChild(totalPrecio);
     }
-
-    totalDiv.innerHTML = `<h3>Precio total de tus compras: $${precioTotal.toFixed(2)}</h3>`;
+    totalPrecio.innerHTML = `<h3>Precio total de tus compras: $${precioTotal}</h3>`;
 }
 renderCarrito(cartStorage);
 

@@ -73,11 +73,10 @@ function renderCarrito (vinosArray) {
         
     });
 
+    //boton eliminar del carrito
     botonEliminar.forEach(element => {
         element.addEventListener("click", eliminarVino);
     });
-    
-    // función para eliminar vino del carrito
     function eliminarVino(e) {
         const vinoId = Number(e.currentTarget.getAttribute('data-js')); 
         const vinoIndex = vinosArray.findIndex(vino => vino.id === vinoId);

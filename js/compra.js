@@ -18,7 +18,6 @@ function submitFinal(e) {
                     <p>Su pedido será entregado en: ${direccion}</p>
                     <p>Precio total: $${precioTotal}</p>`
    ;
-
     resultadoContainer.innerHTML = mensaje;
     formSection.reset();
 }

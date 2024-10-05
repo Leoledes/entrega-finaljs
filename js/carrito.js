@@ -3,13 +3,14 @@ cartStorage = JSON.parse(cartStorage)
 
 let cartContainer = document.getElementById("cart-section")
 
-
 //funcion para renderizar Carrito
 function renderCarrito (vinosArray) {
     if (!vinosArray || !vinosArray.length) {
         cartContainer.innerHTML = 'Te falta tomar más vino! Elegí uno que te guste y volvé al carrito.'
         return;
     }
+
+    cartContainer.innerHTML = '';
     vinosArray.forEach(vino =>{
         let card = document.createElement("div")
         card.innerHTML = `<img class="imagendevino" src="${vino.imagen}">
@@ -24,13 +25,14 @@ function renderCarrito (vinosArray) {
                             <button class="suma" id="sumar-vino" data-js=${vino.id}> + </button>
                             <h4 id="precio-subtotal">Subtotal: $${vino.cantidad*vino.precio}</h4>
                           </div>
-                          <button class="elimina" id="eliminar-vino" data-js=${vino.id} > Eliminar </button>`                            
+                          <button class="elimina" id="${vino.id}"> Eliminar </button>`                            
         cartContainer.appendChild(card)
     })
 
     const botonRestar = document.querySelectorAll('#restar-vino');
     const botonSumar = document.querySelectorAll('#sumar-vino');
     const botonEliminar = document.querySelectorAll('#eliminar-vino');
+    
 
     botonRestar.forEach(element => {
         element.addEventListener('click', (e) => {
@@ -61,17 +63,19 @@ function renderCarrito (vinosArray) {
         
     })
 
-    //TEMRINAR CARGA ERRONEA
     botonEliminar.forEach(element => {
-        element.addEventListener('click', (e) => {
-            const vinoId = e.target.getAttribute('data-js');
-            const vinoStorage = vinosArray.find(vino => vino.id === vinoId);    
-            vinosArray.splice(vinoStorage, 1);
-            });
-
+        element.addEventListener("click", eliminarVino);
+    });
+    //funcion para eliminar vino del carrito
+    function eliminarVino(e) {
+        const vinoId = Number(e.currentTarget.id.split('-')[2]);
+        const vinoIndex = vinosArray.findIndex(vino => vino.id === vinoId);
+        if (vinoIndex !== -1) {
             localStorage.setItem("cartVinos", JSON.stringify(vinosArray));
+            renderCarrito(vinosArray);
+        }
+    }
 
-        })
     
 
     //boton Limpiar Carrito
@@ -88,6 +92,8 @@ function renderCarrito (vinosArray) {
     };
 }
 renderCarrito(cartStorage);
+
+
 
 
 
@@ -109,13 +115,3 @@ renderCarrito(cartStorage);
 
 
 
-//botonEliminar.addEventListener("click", eliminarVino)
-//funcion para eliminar vino del carrito
-//function eliminarVino(e) {
-    //const idBoton = e.currentTarget.id;
-    //const index = vinos.find(vino => vino.id === idBoton);
-    //cartVinos.splice(index, 1);
-    //renderCarrito();
-
-   // localStorage.setItem("cartItems",JSON.stringify(vinos));
-//}

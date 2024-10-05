@@ -33,5 +33,26 @@
         "nombre": "Barda",
         "variedad": "Pinot Noir",
         "precio": 43750
+    },
+    {
+        "id":6,
+        "imagen":"../img/don-david-torrontes.jpg",
+        "nombre": "Don David",
+        "variedad": "Torrontes",
+        "precio": 5612
+    },
+    {
+        "id":7,
+        "imagen":"../img/callejon-del-crimen-malbec.jpg",
+        "nombre": "Callejon del crimen",
+        "variedad": "Malbec",
+        "precio": 7085
+    },
+    {   
+        "id":8,
+        "imagen":"../img/paso-a-paso-criolla-clarette.jpg",
+        "nombre": "Paso a Paso Criolla",
+        "variedad": "Clarette",
+        "precio": 9620
     }
 ]

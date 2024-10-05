@@ -3,6 +3,11 @@ cartStorage = JSON.parse(cartStorage)
 
 let cartContainer = document.getElementById("cart-section")
 
+// Función para calcular el precio total de los productos en el carrito
+function calcularPrecioTotal(vinosArray) {
+    return vinosArray.reduce((total, vino) => total + (vino.precio * vino.cantidad), 0);
+}
+
 //funcion para renderizar Carrito
 function renderCarrito (vinosArray) {
     if (!vinosArray || !vinosArray.length) {
@@ -46,6 +51,7 @@ function renderCarrito (vinosArray) {
             h1Cantidad.innerText = `Cantidad:${vinoStorage.cantidad}`
             }
             localStorage.setItem("cartVinos", JSON.stringify(vinosArray));
+            actualizarPrecioTotal(vinosArray);
         })
     })
 
@@ -59,6 +65,7 @@ function renderCarrito (vinosArray) {
             h1Cantidad.innerText = `Cantidad:${vinoStorage.cantidad}`
         
             localStorage.setItem("cartVinos", JSON.stringify(vinosArray));
+            actualizarPrecioTotal(vinosArray);
         })
         
     })
@@ -73,9 +80,9 @@ function renderCarrito (vinosArray) {
         if (vinoIndex !== -1) {
             localStorage.setItem("cartVinos", JSON.stringify(vinosArray));
             renderCarrito(vinosArray);
+            actualizarPrecioTotal(vinosArray);
         }
     }
-
     
 
     //boton Limpiar Carrito
@@ -89,7 +96,26 @@ function renderCarrito (vinosArray) {
         cartStorage.length = 0;
         localStorage.setItem("cartVinos", JSON.stringify(cartStorage));
         renderCarrito();
+        actualizarPrecioTotal([]);
+        
     };
+    // Mostrar el precio total
+    actualizarPrecioTotal(vinosArray);
+}
+
+
+    // Función para actualizar el precio total de las compras
+function actualizarPrecioTotal(vinosArray) {
+    let precioTotal = calcularPrecioTotal(vinosArray);
+    let totalDiv = document.getElementById('precio-total');
+
+    if (!totalDiv) {
+        totalDiv = document.createElement("div");
+        totalDiv.id = "precio-total";
+        cartContainer.appendChild(totalDiv);
+    }
+
+    totalDiv.innerHTML = `<h3>Precio total de tus compras: $${precioTotal.toFixed(2)}</h3>`;
 }
 renderCarrito(cartStorage);
 

@@ -13,9 +13,9 @@ function submitFinal(e) {
     let precioTotal = document.getElementById("precio-total").value;
     //Toastify
     Toastify({
-        text: "Gracias por su compra "{nombre.value}" "{apellido.value}". Su compra por un valor de $"precioTotal.value" será enviada a:"direccion.value".",
+        text: "Gracias por su compra "+nombre+" "+apellido+". Su compra por un valor de $"+precioTotal+" será enviada a:"+direccion+".",
         duration: 3000,
-        destination: "../pages/carrito.html",
+        destination: "../pages/compra.html",
         newWindow: true,
         close: true,
         gravity: "top", // `top` or `bottom`
@@ -27,25 +27,8 @@ function submitFinal(e) {
         onClick: function(){} // Callback after click
     }).showToast();
 }
+submitFinal();
 
 formSection.addEventListener("submit", () =>{
     e.preventDefault()
 });
-
-
-
-      //Toastify
-      Toastify({
-        text: "Vino agregado al carrito!",
-        duration: 3000,
-        destination: "../pages/carrito.html",
-        newWindow: true,
-        close: true,
-        gravity: "top", // `top` or `bottom`
-        position: "center", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
-        style: {
-        background: "#828282"
-        },
-        onClick: function(){} // Callback after click
-    }).showToast();

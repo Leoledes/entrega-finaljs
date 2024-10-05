@@ -61,8 +61,7 @@ function agregarVino () {
                 onClick: function(){}
             }).showToast();
         }
-    }
-    )
+    })
 }
 
 }

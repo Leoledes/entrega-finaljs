@@ -8,13 +8,12 @@ function calcularPrecioTotal(vinosArray) {
     return vinosArray.reduce((total, vino) => total + (vino.precio * vino.cantidad), 0);
 }
 
-//funcion para renderizar Carrito
+//funcion para renderizar carrito
 function renderCarrito (vinosArray) {
     if (!vinosArray || !vinosArray.length) {
         cartContainer.innerHTML = 'Te falta tomar más vino! Elegí uno que te guste y volvé al carrito.'
         return;
     }
-
     cartContainer.innerHTML = '';
     vinosArray.forEach(vino =>{
         let card = document.createElement("div")
@@ -72,43 +71,40 @@ function renderCarrito (vinosArray) {
             actualizarPrecioTotal(vinosArray);
         })
         
-    })
+    });
 
     botonEliminar.forEach(element => {
-        element.addEventListener("click", eliminarVino);
-    });
+    element.addEventListener("click", eliminarVino);
     //funcion para eliminar vino del carrito
     function eliminarVino(e) {
-        const vinoId = Number(e.currentTarget.id.split('-')[2]);
+        const vinoId = Number(e.currentTarget.id);
         const vinoIndex = vinosArray.findIndex(vino => vino.id === vinoId);
         if (vinoIndex !== -1) {
+            vinosArray.splice(vinoIndex, 1);
             localStorage.setItem("cartVinos", JSON.stringify(vinosArray));
             renderCarrito(vinosArray);
             actualizarPrecioTotal(vinosArray);
-        }
-    }
+        }}
+    });
     
 
     //boton Limpiar Carrito
     const botonLimpiar = document.createElement("div");
     botonLimpiar.innerHTML = `<button class="limpiarCarrito">Limpiar Carrito</button>`;
     cartContainer.appendChild(botonLimpiar);
-
     botonLimpiar.addEventListener("click", limpiarCarrito);
-    //funcion para limpiar carrito
     function limpiarCarrito() {
         cartStorage.length = 0;
         localStorage.setItem("cartVinos", JSON.stringify(cartStorage));
         renderCarrito();
-        actualizarPrecioTotal([]);
+        actualizarPrecioTotal();
         
     };
-    // Mostrar el precio total
     actualizarPrecioTotal(vinosArray);
 }
 
 
-    // Función para actualizar el precio total de las compras
+// funcion para actualizar el precio total de las compras
 function actualizarPrecioTotal(vinosArray) {
     let precioTotal = calcularPrecioTotal(vinosArray);
     let totalPrecio = document.getElementById('precio-total');
@@ -118,6 +114,7 @@ function actualizarPrecioTotal(vinosArray) {
         cartContainer.appendChild(totalPrecio);
     }
     totalPrecio.innerHTML = `<h3>Precio total de tus compras: $${precioTotal}</h3>`;
+    localStorage.setItem("precioTotal", precioTotal);
 }
 renderCarrito(cartStorage);
 

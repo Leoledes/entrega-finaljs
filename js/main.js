@@ -52,13 +52,13 @@ function agregarVino () {
                 destination: "../pages/carrito.html",
                 newWindow: true,
                 close: true,
-                gravity: "top", // `top` or `bottom`
-                position: "center", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
+                gravity: "top",
+                position: "center",
+                stopOnFocus: true,
                 style: {
                 background: "#828282"
                 },
-                onClick: function(){} // Callback after click
+                onClick: function(){}
             }).showToast();
         }
     }

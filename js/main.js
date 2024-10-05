@@ -3,7 +3,7 @@ let vinos = []
 
 //fetch con JSON
 try{
-fetch("./db/vinos.JSON")
+fetch("../db/vinos.JSON")
 .then(response => response.json())
 .then(vinosArray => {
     vinos = vinosArray

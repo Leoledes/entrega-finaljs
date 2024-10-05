@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "imagen": "../img/el-enemigo-malbec.jpg",
+        "imagen": "./img/el-enemigo-malbec.jpg",
         "nombre": "El enemigo",
         "variedad": "Malbec",
         "precio": 18625

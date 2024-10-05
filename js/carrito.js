@@ -29,13 +29,13 @@ function renderCarrito (vinosArray) {
                             <button class="suma" id="sumar-vino" data-js=${vino.id}> + </button>
                             <h4 id="precio-subtotal-${vino.id}">Subtotal: $${vino.cantidad*vino.precio}</h4>
                           </div>
-                          <button class="elimina" id="${vino.id}"> Eliminar </button>`                            
+                          <button class="elimina" data-js="${vino.id}"> Eliminar </button>`                            
         cartContainer.appendChild(card)
     })
 
     const botonRestar = document.querySelectorAll('#restar-vino');
     const botonSumar = document.querySelectorAll('#sumar-vino');
-    const botonEliminar = document.querySelectorAll('#eliminar-vino');
+    const botonEliminar = document.querySelectorAll('.elimina');
     
 
     botonRestar.forEach(element => {
@@ -74,18 +74,20 @@ function renderCarrito (vinosArray) {
     });
 
     botonEliminar.forEach(element => {
-    element.addEventListener("click", eliminarVino);
-    //funcion para eliminar vino del carrito
+        element.addEventListener("click", eliminarVino);
+    });
+    
+    // función para eliminar vino del carrito
     function eliminarVino(e) {
-        const vinoId = Number(e.currentTarget.id);
+        const vinoId = Number(e.currentTarget.getAttribute('data-js')); 
         const vinoIndex = vinosArray.findIndex(vino => vino.id === vinoId);
         if (vinoIndex !== -1) {
             vinosArray.splice(vinoIndex, 1);
             localStorage.setItem("cartVinos", JSON.stringify(vinosArray));
             renderCarrito(vinosArray);
             actualizarPrecioTotal(vinosArray);
-        }}
-    });
+        }
+    }
     
 
     //boton Limpiar Carrito
